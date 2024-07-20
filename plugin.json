@@ -1,0 +1,21 @@
+{
+    "id": "trend-visionone",
+    "version": "0.0.1",
+    "meta": {
+        "label": "Trend Vision One",
+        "description": "Plugin providing python recipes to load data from Trend Vision security platform.",
+        "author": "admin",
+        "icon": "icon-puzzle-piece",
+        "tags": ["Security"],
+        "url": "",
+        "licenseInfo": "Apache Software License"
+    },
+    "params": [
+        {
+            "name": "trendVisionOneApiToken",
+            "label": "API token",
+            "type": "PASSWORD",
+            "description": "Trend Vision One Public API authentication token"
+        }
+    ]
+}
