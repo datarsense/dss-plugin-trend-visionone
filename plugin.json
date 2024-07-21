@@ -5,16 +5,25 @@
         "label": "Trend Vision One",
         "description": "Plugin providing python recipes to load data from Trend Vision security platform.",
         "author": "admin",
-        "icon": "icon-puzzle-piece",
+        "icon": "icon-lock",
         "tags": ["Security"],
         "url": "",
         "licenseInfo": "Apache Software License"
     },
     "params": [
         {
+            "name": "trendVisionOneFqdn",
+            "label": "Trend Vision One FQDN",
+            "type": "STRING",
+            "description": "Configure the correct domain name for your region. FQDN list provided on https://automation.trendmicro.com/xdr/Guides/Regional-domains .",
+            "mandatory": true,
+            "defaultValue": "api.xdr.trendmicro.com"
+        },
+        {
             "name": "trendVisionOneApiToken",
             "label": "API token",
             "type": "PASSWORD",
+            "mandatory": true,
             "description": "Trend Vision One Public API authentication token"
         }
     ]

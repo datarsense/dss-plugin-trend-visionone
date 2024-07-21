@@ -1,0 +1,19 @@
+
+{
+    "meta" : {
+        "label": "Get endpoint list",
+        "description": "Get a detailed list of protected endpoints",
+        "icon": "icon-desktop"
+    },
+    "readable": true,
+    "writable": false,
+    "params": [
+        {
+            "name": "TMV1 Filter",
+            "type": "TEXTAREA",
+            "label": "Filter for retrieving a subset of the endpoint information list.",
+            "description": "Example: not (osName eq 'Windows') and eppAgentAntiMalwareScans eq 'enabled'. Check https://automation.trendmicro.com/xdr/api-v3#tag/Endpoint-Security/paths/~1v3.0~1endpointSecurity~1endpoints/get for filter syntax.",
+            "mandatory": false
+        }
+    ]
+}
