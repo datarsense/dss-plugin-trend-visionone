@@ -5,7 +5,7 @@ import requests
 from six.moves import xrange
 from dataiku.connector import Connector
 
-class GetEnspointList(Connector):
+class GetEndpointList(Connector):
 
   def __init__(self, config, plugin_config):
     Connector.__init__(self, config, plugin_config)  # pass the parameters to the base class
