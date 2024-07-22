@@ -43,6 +43,9 @@ class GetEndpointList(Connector):
       'top': '1000'
     }
 
+    if self.authToken is None or self.authToken.strip() == "":
+      raise Exception('Error : API token missing')
+
     # Add a TMV1-Filter header only if "TMV1 Filter" dataset parameter is not empty
     if self.TMV1Filter is None or self.TMV1Filter.strip() == "":
       headers = {
