@@ -4,6 +4,7 @@
 import requests
 from six.moves import xrange
 from dataiku.connector import Connector
+from helpers import raise_if_apitoken_missing, streamTrendVisionOneData
 
 class GetEndpointList(Connector):
 
@@ -35,6 +36,9 @@ class GetEndpointList(Connector):
     }
 
   def generate_rows(self, dataset_schema=None, dataset_partitioning=None, partition_id=None, records_limit = -1):
+    # Raise an error if API auth token is missing
+    raise_if_apitoken_missing(self.authToken)
+    
     url_base = 'https://' + self.fqdn
     url_path = '/v3.0/endpointSecurity/endpoints'
     url = url_base + url_path
@@ -42,9 +46,6 @@ class GetEndpointList(Connector):
     query_params = {
       'top': '1000'
     }
-
-    if self.authToken is None or self.authToken.strip() == "":
-      raise Exception('Error : API token missing')
 
     # Add a TMV1-Filter header only if "TMV1 Filter" dataset parameter is not empty
     if self.TMV1Filter is None or self.TMV1Filter.strip() == "":
@@ -57,24 +58,7 @@ class GetEndpointList(Connector):
         'TMV1-Filter': self.TMV1Filter
       }
 
-    while True:    
-      r = requests.get(url, params=query_params, headers=headers)
-
-      if r.status_code == 200 and 'application/json' in r.headers.get('Content-Type', '') and len(r.content):
-        data = r.json()
-
-        # Stream data
-        items = data['items']
-        for i in items:
-          yield i
-
-        # Process next page
-        if 'nextLink' in data:
-          url = data['nextLink']
-        else:
-          break
-      else:
-        raise Exception('Error when calling Trend Vision One API. Error code:' + str(r.status_code) + ". Error message: " + r.text)
+    yield from streamTrendVisionOneData(url, query_params, headers)
 
   def get_writer(self, dataset_schema=None, dataset_partitioning=None, partition_id=None):
     raise NotImplementedError
