@@ -1,0 +1,33 @@
+
+{
+    "meta" : {
+        "label": "Search detections",
+        "description": "Search detections",
+        "icon": "icon-warning-sign"
+    },
+    "readable": true,
+    "writable": false,
+    "params": [
+        {
+            "name": "startDateTime",
+            "type": "STRING",
+            "label": "Start of the data retrieval range - Timestamp in ISO 8601",
+            "description": "Example: 2021-04-05T08:22:37Z",
+            "mandatory": true
+        },
+        {
+            "name": "endDateTime",
+            "type": "STRING",
+            "label": "End of the data retrieval range - Timestamp in ISO 8601",
+            "description": "Example: 2021-04-05T08:22:37Z",
+            "mandatory": true
+        },
+        {
+            "name": "TMV1Query",
+            "type": "TEXTAREA",
+            "label": "Filter for retrieving a subset of the collected endpoint activity data.",
+            "description": "Example: dpt:443 or src:'192.169.1.1'. Check https://automation.trendmicro.com/xdr/api-v3#tag/Search/paths/~1v3.0~1search~1detections/get for filter syntax.",
+            "mandatory": true
+        }
+    ]
+}
