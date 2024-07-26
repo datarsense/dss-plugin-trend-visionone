@@ -1,0 +1,33 @@
+
+{
+    "meta" : {
+        "label": "Get Observed Attack Techniques events",
+        "description": "Get Observed Attack Techniques events",
+        "icon": "icon-shield"
+    },
+    "readable": true,
+    "writable": false,
+    "params": [
+        {
+            "name": "startDateTime",
+            "type": "STRING",
+            "label": "Start of the data retrieval range - Timestamp in ISO 8601",
+            "description": "Example: 2021-04-05T08:22:37Z",
+            "mandatory": true
+        },
+        {
+            "name": "endDateTime",
+            "type": "STRING",
+            "label": "End of the data retrieval range - Timestamp in ISO 8601",
+            "description": "Example: 2021-04-05T08:22:37Z",
+            "mandatory": true
+        },
+        {
+            "name": "TMV1Filter",
+            "type": "TEXTAREA",
+            "label": "TMV1 Filter for retrieving a subset of the collected Observed Attack Techniques events.",
+            "description":"Example: (riskLevel eq 'high') and (endpointName eq 'my-computer')'. Check https://automation.trendmicro.com/xdr/api-v3#tag/Observed-Attack-Techniques/paths/~1v3.0~1oat~1detections/get for filter syntax.",
+            "mandatory": false
+        }
+    ]
+}

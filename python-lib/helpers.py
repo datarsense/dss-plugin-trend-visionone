@@ -1,4 +1,5 @@
 import requests
+import time
 
 # Raise an error if API authentication token is null or contains only blank chars
 def raise_if_apitoken_missing(token):
@@ -30,5 +31,7 @@ def streamTrendVisionOneData(url, query_params, headers):
           url = data['nextLink']
         else:
           break
+      elif r.status_code == 429:
+        time.sleep(15)
       else:
         raise Exception('Error when calling Trend Vision One API. Error code:' + str(r.status_code) + ". Error message: " + r.text)
