@@ -31,7 +31,7 @@ def streamTrendVisionOneData(url, query_params, headers):
           url = data['nextLink']
         else:
           break
-      elif r.status_code == 429:
+      elif r.status_code == 429 or r.status_code == 504:
         time.sleep(15)
       else:
         raise Exception('Error when calling Trend Vision One API. Error code:' + str(r.status_code) + ". Error message: " + r.text)
