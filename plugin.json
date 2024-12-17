@@ -1,6 +1,6 @@
 {
     "id": "trend-visionone",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "meta": {
         "label": "Trend Vision One",
         "description": "Plugin providing python recipes to load data from Trend Vision security platform.",

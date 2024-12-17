@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "label": "Enrich with EDR telemetry data",
+    "description": "Join dataset with Trend Vision One endpoint network telemetry",
+    "icon": "icon-link"
+  },
+
+  "kind": "PYTHON",
+
+  "selectableFromDataset" : "Input Dataset",
+  "inputRoles" : [
+    {
+      "name": "Input Dataset",
+      "arity": "UNARY",
+      "required": true,
+      "acceptsDataset": true
+    }
+  ],
+  "outputRoles" : [
+    {
+      "name": "Output Dataset",
+      "arity": "UNARY",
+      "required": true,
+      "acceptsDataset": true
+    }
+  ],
+
+  "params": [
+    {
+      "name": "eventDate",
+      "label": "Event datetime column",
+      "type": "COLUMN",
+      "columnRole":"Input Dataset",
+      "mandatory": true
+    },
+    {
+      "name": "edrFirewallTimedelta",
+      "label": "Timezone offset between EDR and Firewall timestamps (unit: hours)",
+      "type": "INT",
+      "defaultvalue": 0,
+      "mandatory": true
+    },
+    {
+      "name": "srcIp",
+      "label": "Source IP column",
+      "type": "COLUMN",
+      "columnRole":"Input Dataset",
+      "mandatory": true
+    },
+    {
+      "name": "srcPort",
+      "label": "Source port column",
+      "type": "COLUMN",
+      "columnRole":"Input Dataset",
+      "mandatory": true
+    },
+    {
+      "name": "dstIp",
+      "label": "Destination IP column",
+      "type": "COLUMN",
+      "columnRole":"Input Dataset",
+      "mandatory": true
+    },
+    {
+      "name": "dstPort",
+      "label": "Destination port column",
+      "type": "COLUMN",
+      "columnRole":"Input Dataset",
+      "mandatory": true
+    },
+    {
+      "name": "ipProto",
+      "label": "Protocole (TCP or UDP)",
+      "type": "COLUMN",
+      "columnRole":"Input Dataset",
+      "mandatory": true
+    }
+  ],
+
+  "resourceKeys": []
+}
